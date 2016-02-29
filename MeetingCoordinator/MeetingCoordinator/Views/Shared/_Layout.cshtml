@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="@ViewBag.Description" name="description" />
+    <meta content="The Changlings" name="author" />
+    <title>@ViewBag.Title</title>
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/bundles/bootstrap", "~/bundles/theme")
+</head>
+<body class="">
+<!-- BEGIN HEADER-->
+<div class="header navbar navbar-inverse">
+    <!-- BEGIN TOP NAVIGATION BAR -->
+    <div class="navbar-inner">
+        @Html.Partial("_NavigationHeaderPartial")
+        @Html.Partial("_ContentHeaderPartial")
+    </div>
+    <!-- END TOP NAVIGATION BAR -->
+</div>
+<!-- END HEADER -->
+<!-- BEGIN CONTENT -->
+<div class="page-container row-fluid">
+    @Html.Partial("_SidebarPartial")
+    <!-- BEGIN PAGE CONTAINER -->
+    <div class="page-content">
+        <div class="content">
+            @RenderBody()
+        </div>
+    </div>
+    <!-- END PAGE CONTAINER -->
+</div>
+<!-- END CONTENT-->
+@Scripts.Render("~/bundles/javascript")
+@RenderSection("scripts", required: false)
+</body>
+</html>

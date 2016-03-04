@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8"/>
+    <title>@ViewBag.Title</title>
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/bundles/bootstrap", "~/bundles/theme")
+</head>
+<body class="error-body no-top">
+<div class="contianer">
+    @RenderBody()
+</div>
+@Scripts.Render("~/bundles/javascript")
+@RenderSection("scripts", required: false)
+</html>

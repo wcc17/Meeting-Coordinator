@@ -250,6 +250,7 @@
     <Content Include="Views\Shared\_NavigationHeaderPartial.cshtml" />
     <Content Include="Views\Shared\_ContentHeaderPartial.cshtml" />
     <Content Include="Views\Shared\_SidebarPartial.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -38,6 +38,7 @@ namespace MeetingCoordinator
                       "~/Scripts/plugins/jquery-block-ui/jqueryblockui.js",
                       "~/Scripts/plugins/jquery-scrollbar.min.js",
                       "~/Scripts/plugins/pace/pace.min.js",
+                      "~/Scripts/js/login.js",
                       "~/Scripts/plugins/jquery-numberAnimate/jquery.animateNumbers.js"));
         }
     }

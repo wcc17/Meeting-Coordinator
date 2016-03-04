@@ -1,4 +1,6 @@
-﻿<!-- BEGIN SIDEBAR -->
+﻿@using System.Web.UI.WebControls
+@using MeetingCoordinator.Controllers
+<!-- BEGIN SIDEBAR -->
 <!-- BEGIN MENU -->
 <div class="page-sidebar" id="main-menu">
     <div class="page-sidebar-wrapper scrollbar-dynamic" id="main-menu-wrapper">
@@ -17,109 +19,61 @@
         <!-- BEGIN SIDEBAR MENU -->
         <p class="menu-title">BROWSE<span class="pull-right"><a href="javascript:;"><i class="fa fa-refresh"></i></a></span></p>
         <ul>
-            <!-- BEGIN SELECTED LINK -->
-            <li class="start active">
-                <a href="#">
+            <li class="start @(Request.Url.PathAndQuery == "/" ? "selected" : "")">
+                <a href="/">
                     <i class="icon-custom-home"></i>
-                    <span class="title">Link 1</span>
-                    <span class="selected"></span>
-                    <span class="badge badge-important pull-right">5</span>
+                    <span class="title">Main Dashboard</span>
+                    @if (Request.Url.PathAndQuery == "/")
+                    {
+                        <span class="selected"></span>
+                    }
                 </a>
             </li>
-            <!-- END SELECTED LINK -->
+            <li class="start @(Request.Url.PathAndQuery == "/Meeting/Schedule" ? "selected" : "")">
+                <a href="/">
+                    <i class="fa fa-plus"></i>
+                    <span class="title">Schedule Meeting</span>
+                    @if (Request.Url.PathAndQuery == "/Meeting/Schedule")
+                    {
+                        <span class="selected"></span>
+                    }
+                </a>
+            </li>
             <!-- BEGIN BADGE LINK -->
             <li class="">
                 <a href="#">
-                    <i class="fa fa-envelope"></i>
-                    <span class="title">Link 2</span>
-                    <span class="badge badge-disable pull-right">203</span>
+                    <i class="fa fa-comments"></i>
+                    <span class="title">My Meetings</span>
+                    <span class="badge badge-disable pull-right">3</span>
                 </a>
             </li>
             <!-- END BADGE LINK -->
-            <!-- BEGIN SINGLE LINK -->
-            <li class="">
-                <a href="#">
-                    <i class="fa fa-flag"></i>
-                    <span class="title">Link 3</span>
-                </a>
-            </li>
-            <!-- END SINGLE LINK -->
-            <!-- BEGIN ONE LEVEL MENU -->
-            <li class="">
-                <a href="javascript:;">
-                    <i class="icon-custom-ui"></i>
-                    <span class="title">Link 4</span>
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li><a href="#">Sub Link 1</a></li>
-                </ul>
-            </li>
-            <!-- END ONE LEVEL MENU -->
-            <!-- BEGIN TWO LEVEL MENU -->
-            <li class="">
-                <a href="javascript:;">
-                    <i class="fa fa-folder-open"></i>
-                    <span class="title">Link 5</span>
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li><a href="javascript:;">Sub Link 1</a></li>
-                    <li>
-                        <a href="javascript:;"><span class="title">Sub Link 2</span><span class="arrow "></span></a>
-                        <ul class="sub-menu">
-                            <li><a href="javascript:;">Sub Link 1</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <!-- END TWO LEVEL MENU -->
         </ul>
         <!-- END SIDEBAR MENU -->
         <!-- BEGIN SIDEBAR WIDGETS -->
         <div class="side-bar-widgets">
-            <!-- BEGIN FOLDER WIDGET -->
-            <p class="menu-title">FOLDER<span class="pull-right"><a href="#" class="create-folder"><i class="icon-plus"></i></a></span></p>
-            <ul class="folders">
-                <li><a href="#"><div class="status-icon green"></div>Task 1</a></li>
-                <!-- BEGIN HIDDEN INPUT BOX (FOR ADD FOLDER LINK) -->
-                <li class="folder-input" style="display:none">
-                    <input type="text" placeholder="Name of folder" class="no-boarder folder-name" name="" id="folder-name">
-                </li>
-                <!-- END HIDDEN INPUT BOX (FOR ADD FOLDER LINK) -->
-            </ul>
-            <!-- END FOLDER WIDGET -->
             <!-- BEGIN PROJECTS WIDGET -->
-            <p class="menu-title">PROJECTS</p>
+            <p class="menu-title">MEETINGS</p>
             <!-- BEGIN EXAMPLE 1 -->
             <div class="status-widget">
                 <div class="status-widget-wrapper">
-                    <div class="title">Project Title<a href="#" class="remove-widget"><i class="icon-custom-cross"></i></a></div>
-                    <p>Project Description</p>
+                    <div class="title">Meeting 1<a href="#" class="remove-widget"><i class="icon-custom-cross"></i></a></div>
+                    <p>Lorem ipsum...</p>
                 </div>
-            </div>
-            <!-- END EXAMPLE 1 -->
+                <div class="status-widget-wrapper">
+                    <div class="title">Meeting 2<a href="#" class="remove-widget"><i class="icon-custom-cross"></i></a></div>
+                    <p>Lorem ipsum...</p>
+                </div>
+                <div class="status-widget-wrapper">
+                    <div class="title">Meeting 3<a href="#" class="remove-widget"><i class="icon-custom-cross"></i></a></div>
+                    <p>Lorem ipsum...</p>
+                </div>
+            </div>      
             <!-- END PROJECTS WIDGET -->
         </div>
         <div class="clearfix"></div>
         <!-- END SIDEBAR WIDGETS -->
     </div>
 </div>
-<!-- BEGIN SCROLL UP HOVER -->
-<a href="#" class="scrollup">Scroll</a>
-<!-- END SCROLL UP HOVER -->
 <!-- END MENU -->
-<!-- BEGIN SIDEBAR FOOTER WIDGET -->
-<div class="footer-widget">
-    <div class="progress transparent progress-small no-radius no-margin">
-        <div data-percentage="79%" class="progress-bar progress-bar-success animate-progress-bar"></div>
-    </div>
-    <div class="pull-right">
-        <div class="details-status">
-            <span data-animation-duration="560" data-value="86" class="animate-number"></span>%
-        </div>
-        <a href="#"><i class="fa fa-power-off"></i></a>
-    </div>
-</div>
-<!-- END SIDEBAR FOOTER WIDGET -->
 <!-- END SIDEBAR --> 

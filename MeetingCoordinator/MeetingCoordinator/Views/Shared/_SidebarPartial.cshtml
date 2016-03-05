@@ -11,25 +11,24 @@
             </div>
             <div class="user-info">
                 <div class="greeting">Welcome</div>
-                <div class="username">John <span class="semi-bold">Smith</span></div>
-                <div class="status">Status<a href="#"><div class="status-icon green"></div>Online</a></div>
+                <div class="username">Attendee</div>
             </div>
         </div>
         <!-- END MINI-PROFILE -->
         <!-- BEGIN SIDEBAR MENU -->
         <p class="menu-title">BROWSE<span class="pull-right"><a href="javascript:;"><i class="fa fa-refresh"></i></a></span></p>
         <ul>
-            <li class="start @(Request.Url.PathAndQuery == "/" ? "selected" : "")">
+            <li class="@(Request.Url.PathAndQuery == "/" || Request.Url.PathAndQuery == "/Home/Index" ? "start selected" : "")">
                 <a href="/">
                     <i class="icon-custom-home"></i>
                     <span class="title">Main Dashboard</span>
-                    @if (Request.Url.PathAndQuery == "/")
+                    @if (Request.Url.PathAndQuery == "/" || Request.Url.PathAndQuery == "/Home/Index")
                     {
                         <span class="selected"></span>
                     }
                 </a>
             </li>
-            <li class="start @(Request.Url.PathAndQuery == "/Meeting/Schedule" ? "selected" : "")">
+            <li class="@(Request.Url.PathAndQuery == "/Meeting/Schedule" ? "start selected" : "")">
                 <a href="/">
                     <i class="fa fa-plus"></i>
                     <span class="title">Schedule Meeting</span>

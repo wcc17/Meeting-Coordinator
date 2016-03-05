@@ -21,15 +21,15 @@
             <li class="@(Request.Url.PathAndQuery == "/" || Request.Url.PathAndQuery == "/Home/Index" ? "start selected" : "")">
                 <a href="/">
                     <i class="icon-custom-home"></i>
-                    <span class="title">Main Dashboard</span>
+                    <span class="title">View Planner</span>
                     @if (Request.Url.PathAndQuery == "/" || Request.Url.PathAndQuery == "/Home/Index")
                     {
                         <span class="selected"></span>
                     }
                 </a>
             </li>
-            <li class="@(Request.Url.PathAndQuery == "/Meeting/Schedule" ? "start selected" : "")">
-                <a href="/">
+            <li class="@(Request.Url.PathAndQuery == "/Meeting/Schedule" ? "start selected" : "")" id="schedule-meeting-sidebar">
+                <a href="#">
                     <i class="fa fa-plus"></i>
                     <span class="title">Schedule Meeting</span>
                     @if (Request.Url.PathAndQuery == "/Meeting/Schedule")
@@ -39,21 +39,21 @@
                 </a>
             </li>
             <!-- BEGIN BADGE LINK -->
-            <li class="">
+            <!--<li class="">
                 <a href="#">
                     <i class="fa fa-comments"></i>
                     <span class="title">My Meetings</span>
                     <span class="badge badge-disable pull-right">3</span>
                 </a>
-            </li>
+            </li>-->
             <!-- END BADGE LINK -->
         </ul>
         <!-- END SIDEBAR MENU -->
         <!-- BEGIN SIDEBAR WIDGETS -->
-        <div class="side-bar-widgets">
-            <!-- BEGIN PROJECTS WIDGET -->
+        <!--<div class="side-bar-widgets">
+            &lt;!&ndash; BEGIN PROJECTS WIDGET &ndash;&gt;
             <p class="menu-title">MEETINGS</p>
-            <!-- BEGIN EXAMPLE 1 -->
+            &lt;!&ndash; BEGIN EXAMPLE 1 &ndash;&gt;
             <div class="status-widget">
                 <div class="status-widget-wrapper">
                     <div class="title">Meeting 1<a href="#" class="remove-widget"><i class="icon-custom-cross"></i></a></div>
@@ -67,12 +67,12 @@
                     <div class="title">Meeting 3<a href="#" class="remove-widget"><i class="icon-custom-cross"></i></a></div>
                     <p>Lorem ipsum...</p>
                 </div>
-            </div>      
-            <!-- END PROJECTS WIDGET -->
-        </div>
+            </div>
+            &lt;!&ndash; END PROJECTS WIDGET &ndash;&gt;
+        </div>-->
         <div class="clearfix"></div>
         <!-- END SIDEBAR WIDGETS -->
     </div>
 </div>
 <!-- END MENU -->
-<!-- END SIDEBAR --> 
+<!-- END SIDEBAR -->

@@ -21,7 +21,6 @@ namespace MeetingCoordinator
                       "~/Scripts/plugins/bootstrapv3/css/bootstrap-theme.min.css"));
 
             bundles.Add(new StyleBundle("~/bundles/theme").Include(
-                      "~/Scripts/plugins/pace/pace-theme-flash.css",
                       "~/Scripts/plugins/jquery-scrollbar/jquery.scrollbar.css",
                       "~/Scripts/plugins/font-awesome/css/font-awesome.css",
                       "~/Scripts/css/animate.min.css",
@@ -37,7 +36,6 @@ namespace MeetingCoordinator
                       "~/Scripts/plugins/jquery-unveil/jquery.unveil.min.js",
                       "~/Scripts/plugins/jquery-block-ui/jqueryblockui.js",
                       "~/Scripts/plugins/jquery-scrollbar.min.js",
-                      "~/Scripts/plugins/pace/pace.min.js",
                       "~/Scripts/plugins/jquery-numberAnimate/jquery.animateNumbers.js"));
         }
     }

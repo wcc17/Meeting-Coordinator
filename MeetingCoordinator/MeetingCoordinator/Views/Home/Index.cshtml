@@ -1,35 +1,166 @@
-﻿@{
+﻿<!--formatter:off-->
+@{
     ViewBag.Title = "Home Page";
 }
-<div class="row">
-    <div class="tiles white no-padding">
-        <div class="tiles-body">
-            <div class="full-calender-header">
-                <div class="pull-left">
-                    <div class="btn-group ">
-                        <button class="btn btn-success" id="calender-prev"><i class="fa fa-angle-left"></i></button>
-                        <button class="btn btn-success" id="calender-next"><i class="fa fa-angle-right"></i></button>
-                    </div>
-                </div>
-                <div class="pull-right">
-                    <div data-toggle="buttons-radio" class="btn-group">
-                        <button class="btn btn-primary active" type="button" id="change-view-month">month</button>
-                        <button class="btn btn-primary " type="button" id="change-view-week">week</button>
-                        <button class="btn btn-primary" type="button" id="change-view-day">day</button>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
+<!--formatter:on-->
+<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="meeting-details">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Edit Meeting</h4>
             </div>
-            <div id='calendar'></div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label class="form-label">Title</label>
+                        <span class="help">e.g: Jim's Surprise Birthday Party</span>
+                        <div class="controls">
+                            <input type="text" value="" name="title"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <span class="help">What's this meeting for?</span>
+                        <div class="controls">
+                            <textarea name="description" class="form-control">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, fugiat.</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Start Time</label>
+                        <div class="controls">
+                            <input type="datetime-local" value="" name="start-time" class="form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">End Time</label>
+                        <div class="controls">
+                            <input type="datetime-local" value="" name="start-time" class="form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Attendees</label>
+                        <div class="controls">
+                            <select multiple name="attendees" class="form-control">
+                                <option value="1">Attendee 1</option>
+                                <option value="2">Attendee 2</option>
+                                <option value="3">Attendee 3</option>
+                                <option value="4">Attendee 4</option>
+                                <option value="5">Attendee 5</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="save-meeting">Save changes</button>
+                <button type="button" class="btn btn-danger" id="delete-meeting" data-meeting-id="">Delete Meeting
+                </button>
+            </div>
         </div>
     </div>
 </div>
-
+<div class="row" style="max-height:600px;">
+    <div class="tiles row tiles-container blue no-padding">
+        <div class="col-md-4 tiles blue no-padding">
+            <div class="tiles-body">
+                <div class="calender-options-wrapper">
+                    <h3 class="text-white semi-bold" id="calender-current-day"></h3>
+                    <h2 class="text-white" id="calender-current-date"></h2>
+                    <div id="external-events" class="hide-inphone events-wrapper">
+                        <div class="events-heading">Upcoming Meetings</div>
+                        @*When this is made dynamic, replace all the data-* attributes with ids and look up based on id
+                        with an AJAX call to the controller*@
+                        <div class="external-event">
+                            <span class="meeting" data-title="Meeting 1" data-attendees="1,3,5"
+                                  data-id="1">Meeting 1</span>
+                            <span class="delete-meeting pull-right"><i class="fa fa-times"></i></span>
+                        </div>
+                        <div class="external-event">
+                            <span class="meeting" data-title="Meeting 2" data-attendees="1" data-id="2">Meeting 2</span>
+                            <span class="delete-meeting pull-right"><i class="fa fa-times"></i></span>
+                        </div>
+                        <div class="external-event">
+                            <span class="meeting" data-title="Meeting 3" data-attendees="2,4,5"
+                                  data-id="3">Meeting 3</span>
+                            <span class="delete-meeting pull-right"><i class="fa fa-times"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 tiles white no-padding">
+            <div class="tiles-body">
+                <div class="full-calender-header">
+                    <div class="pull-left">
+                        <div class="btn-group ">
+                            <button class="btn btn-success" id="calender-prev"><i class="fa fa-angle-left"></i></button>
+                            <button class="btn btn-success" id="calender-next"><i class="fa fa-angle-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                        <div data-toggle="buttons-radio" class="btn-group">
+                            <button class="btn btn-primary active" type="button" id="change-view-month">month</button>
+                            <button class="btn btn-primary " type="button" id="change-view-week">week</button>
+                            <button class="btn btn-primary" type="button" id="change-view-day">day</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div id="calendar"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--formatter:off-->
 @section Scripts {
     @Scripts.Render("~/Scripts/js/calender.js",
     "~/Scripts/plugins/fullcalendar/fullcalendar.min.js")
+<!--formatter:on-->
+<!-- TODO Move this to a separate JS file-->
+<script>
+    $(document).ready(function () {
+        $('#external-events div.external-event span.meeting').click(function (e) {
+            $('.modal-body').find('input[name=title]').val(this.dataset.title);
+            this.dataset.attendees.split(',').forEach(function (val, index) {
+                $('select[name=attendees]').find('option[value=' + val + ']').attr('selected', true);
+            });
+            $('#delete-meeting')[0].dataset.meetingId = this.dataset.id;
+            $('#meeting-details').modal("show");
+        });
+
+        $('#delete-meeting').click(function (e) {
+            if (confirm("Are you sure you wish to remove this meeting? This cannot be undone!")) {
+                $('.meeting[data-id=' + this.dataset.meetingId + ']').closest('.external-event').remove();
+                $('#meeting-details').modal("hide");
+            }
+        });
+
+        $('.delete-meeting').click(function (e) {
+            if(confirm("Are you sure you wish to remove this meeting? This cannot be undone!")){
+                $(this).closest('.external-event').remove();
+            }
+        });
+    });
+</script>
 }
 
+<!--formatter:off-->
 @section Styles {
     @Styles.Render("~/Scripts/plugins/fullcalendar/fullcalendar.css")
+<!--formatter:on-->
+<style>
+    .calender-options-wrapper .external-event {
+        cursor: initial;
+    }
+
+    .calender-options-wrapper .external-event span {
+        cursor: pointer;
+    }
+</style>
 }
